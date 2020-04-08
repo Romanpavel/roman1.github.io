@@ -74,14 +74,14 @@ function myFunction() {
 // 7. closures are referencing global scoped variables inside your local scope
 
 
-function makeFunc() {
-  var name = 'Mozilla';
-  function displayName() {
-    alert(name);
-  }
-  return displayName;
-}
+// function makeFunc() {
+//   var name = 'Mozilla';
+//   function displayName() {
+//     alert(name);
+//   }
+//   return displayName;
+// }
 
-var myFunc = makeFunc();
-myFunc();
+// var myFunc = makeFunc();
+// myFunc();
 

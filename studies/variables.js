@@ -44,11 +44,11 @@ Output:
 undefined
 5
 
-// let is also a way to assign value similar to var but it is only local scoped
+// let is also a way to assign value similar to var
 
 Input:
-console.log(y);
-let y=5;
+// console.log(y);
+var y = 5;
 console.log(y);
 Output:
 Error
@@ -56,7 +56,7 @@ Error
 // const is a variable that can not be changed, called a contstant 
 
 const RATE = 0.1;
-RATE = 0.2; // TypeError when trying to reasign a const
+//RATE = 0.2; // TypeError when trying to reasign a const
 
 /* undeclared variables are global variables, to hoist is to make it universally accessible
 bringing the varaible to the top of the scope

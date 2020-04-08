@@ -69,18 +69,48 @@ function makeContactList() {
                 return contacts[i]
                 
             } else {return undefined} // else statement 
-        }
+         } 
         },
-        removeContact: function(contact) {
+        removeContact: function(contact) {  // create a function
+        
+        // for loop to go over the array
+        
             for (var x = 0; x < contacts.length; x++) {
                 
+                // if statemnt to strcitly compare
+                
               if (contacts[x].nameFirst === contact.nameFirst) {
+                  
+                  // splice method removes 1 from x index
+                  
                   contacts.splice(x, 1);
               }
               
                 }
+            },
+            
+            printAllContactNames: function() {
+            
+            var fullName = []; // create an array to store values 
+            
+            
+            for (var y = 0; y < contacts.length; y++) {
+                fullName.push(contacts[y].nameFirst + ' ' + contacts[y].nameLast);
+            }
+            
+            var string = '';   // place to hold fullName in a string
+            
+            // iterate theough the fullName array
+            
+            for (var z = 0; z < fullName.length; z++) {
+                if(z !== fullName.length - 1) {
+                    string += `${fullName[z]}\n`;
+                    
+            } else if (z === fullName.length - 1) {
+                string += fullName[z];
             }
         }
+        return string; 
     }
 
 
@@ -89,7 +119,8 @@ function makeContactList() {
 
 // YOUR CODE GOES ABOVE HERE //
 
-
+};
+}
 
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
