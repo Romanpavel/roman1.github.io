@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('lodown-roman1.github.io');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -16,22 +16,94 @@ var _ = require(/* Replace this with the name of your lodown! */);
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *    npm start --prefix ./roman1.github.io/projects/let-s-get-functional
  *
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
 var maleCount = function(array) {
+    //I: aaray
+    //O: Number
+ let filterOut =   _.filter(array, function(customerObj){
+        // filter out all of the male customers
+        return customerObj.gender === 'male';
+    })
+    
+    return filterOut.length
+};
+
+var femaleCount = function(array) {
+    //I: array of customer objs
+    //O: number of female customers
+   return _.reduce(array, function(prev, current){
+        // when to increment our seed
+            // if our customer has a gender of female
+        if(current.gender === 'female') {
+            prev += 1;
+        }
+        // when to not increment our seed
+            // do not increment if not a female
+        return prev;
+    }, 0)
+}
+
+var oldestCustomer = function(array) {
+    // I: array of customer objects
+    // O: a string of the oldest customer
+    
+    // create a variable and assign it to start of 0
+    var oldestPerson = 0 ;
+    return _.reduce(array, function(prev, curr) {
+        if(curr.age > oldestPerson) {
+            oldestPerson = curr.age;
+            return curr.name;
+          
+        }
+        return prev;
+    
+    }, '');
+
+};
+var youngestCustomer = function(array) {
+    // I: array of customer objects
+    // O: a string of the oldest customer
+    
+    // create a variable and assign it to start of 0
+    var youngestPerson = Infinity ;
+    return _.reduce(array, function(prev, curr) {
+        if(curr.age < youngestPerson) {
+            youngestPerson = curr.age;
+            return curr.name;
+          
+        }
+        return prev;
+    
+    }, '');
 
 };
 
-var femaleCount;
 
-var oldestCustomer;
+var averageBalance = function(array) {
+    //I: an array of customer objects
+    //O: the avarage balance of all customers as a number
+    
+    
+    return _.filter(array, function(sum) {
+        for (var key in sum) {
+            sum[key] += sum
+        }
+        return _.reduce(array, sum)
+    })
+    
+    // return _.reduce(array, function(sum, people) {
+    //     for(var key in sum) {
+    //         sum[key] += sum;
+    //     }
+    //     return sum/people;
+        
+    }, 0);
+};
 
-var youngestCustomer;
-
-var averageBalance;
 
 var firstLetterCount;
 

@@ -24,10 +24,12 @@ console.log(y); // returns another string yet another string
 
 var change = "hello world"
 
-change.length // return lenght of string
+change.length // return length of string => 11
 
-change.toLowerCase() // returns lowercase string
+change.toUpperCase() // upercase the string => "HELLO WORLD"
 
-change.toUpperCase() // upercase the string
+change.toLowerCase() // returns lowercase string => 'hello world'
+
+
 
 // there are several other methods with manipulating strings

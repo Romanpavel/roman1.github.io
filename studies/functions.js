@@ -2,7 +2,7 @@
 followed by parantheses ()
 */
 function name () {
-    return console.log();
+    return console.log();  // functions end at return statements 
 }
 
 // the way to use the function is by passing in a value into the paranthese
@@ -27,11 +27,11 @@ function name3 (parameter) { // keyword function, name of function, parameter
 
 // 4. you can assign a fucntion to a variable with the assignment operator 
 
-var myFunction = function name4 () {
+var name4 = function () {
     return console.log();
 }
 
-// 5. INputs are parameters anf returns give the single value
+// 5. INputs are parameters and returns give the single value
 
 function name5(parameter) {
   return // single value
@@ -40,48 +40,40 @@ function name5(parameter) {
 
 // 6. Local vs. global scope
 
-/* Each function creates a new scope.
-Scope determines the accessibility of these variables.
-Variables defined inside a function are not accessible from outside the function
-
-Variables declared within a JavaScript function, become LOCAL to the function.
-Local variables have Function scope: They can only be accessed from within the function
+/* local scope: or function scope are variables that are only referenced
+inside the code block
 */
 
-// code here can NOT use carName
+function x() {
+  var y = "string1";
 
-function myFunction() {
-  var carName = "Volvo";
-
-  // code here CAN use carName
+  console.log(y) // has reference to to 'string1'
 
 }
 
-/* A variable declared outside a function, becomes GLOBAL.
-A global variable has global scope: All scripts and functions on a web page can access it.
-*/
+// global scope: varibales that are available throughout the ENTIRE code
 
-var carName = "Volvo";
 
-// code here can use carName
+var y = "string2";
 
-function myFunction() {
+console.log(y) // will print 'string2' because it is globally scoped
 
-  // code here can also use carName
+// 7. closures give you access to outer functions from inside the function.
 
+// meaing you can use arguments passed in the outer function and call it
+// from the inside of the function returning a value from several methods
+
+function addingUp () {
+    let first = 0       // local variable in the addingUp function
+    function addIt () { // nested function to increment by 1
+        first += 1      // example of closure using parent variable 
+        return first
+    }
+    return addIt
 }
+ 
+var plusOne = addingUp();
 
-// 7. closures are referencing global scoped variables inside your local scope
-
-
-// function makeFunc() {
-//   var name = 'Mozilla';
-//   function displayName() {
-//     alert(name);
-//   }
-//   return displayName;
-// }
-
-// var myFunc = makeFunc();
-// myFunc();
-
+var another1 = plusOne()  // returns 1
+var another2 = plusOne()  // return 2
+console.log(another2);    // prints 2 to the screen

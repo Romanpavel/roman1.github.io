@@ -250,6 +250,7 @@ _.contains = function (array, value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
 _.each = function(collection, func) {
     // check if collection is array and if true, call func once for each element
     if (Array.isArray(collection) == true) {

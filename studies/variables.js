@@ -1,72 +1,49 @@
-/*
- * VARIABLES:
- *
- * 0. To hold things in memory during the life-cycle of a program, we can use variables.  Variables
- * are named identifiers that can point to values of a particular type, like a Number, String,
- * Boolean, Array, Object or another data-type.  Variables are called so because once created, we
- * can CHANGE the value (and type of value) to which they point.
- *
- * 1. To create a variable we use the keyword, var, followed by a name (id or alias) for our
- * variable.
- *
- * 2. There are 2 phases of using variables: declaration and initialization (or assignment).
- */
+// variables are place holders for any dataType, they are a way for us to name things
 
-// 1. declaration //
-var myName;
+// variables can be expressed with 3 different special words: var, let, const
 
-/*
- * At the declaration phase, the variable myName is undefined because we have NOT initialized
- * it to anything
- */
-console.log(myName); // prints => undefined
+// to declare a variable we simply use 1 of the 3 key words followed by any name
 
-// 2. initialization or assignment //
-myName = 'john';
-console.log(myName); // prints => john
+var myVariable;
+let anotherVariable;
+// const neverChangeVariable
 
-// 3. re-assignment //
-myName = 'bob';
-console.log(myName); // prints => bob
+// the way to asign a variable is through the (=) operator 
 
-// NOTE: We can assign and re-assign anything to a variable - we cannot do this with constants //
-var myVariable = 1;
-var myVariable = true;
-myVariable = "someString";
+myVariable = 'Im a string';
+anotherVariable = 3;
 
-// var is short for variable and used in functional scope
+// you can shorten this step on a single line
 
-Input:
-console.log(x);
-var x=5;
-console.log(x);
-Output:
-undefined
-5
+var myVariable = 'Im another string';
 
-// let is also a way to assign value similar to var
+// var keyword is usually used in global scope
 
-Input:
-// console.log(y);
-var y = 5;
-console.log(y);
-Output:
-Error
+var globalVariable = 42;
 
-// const is a variable that can not be changed, called a contstant 
+// let is usually used a placeholder for a local scope, or inside loops
 
-const RATE = 0.1;
-//RATE = 0.2; // TypeError when trying to reasign a const
+function hey (x) {
+    let y = '!!!'
+    return 'Hey! OK!' + y; // returns "Hey! OK!!!!"
+}
 
-/* undeclared variables are global variables, to hoist is to make it universally accessible
-bringing the varaible to the top of the scope
+// const is a variable that cannot be changed
+
+// const neverChange = 'dont change me bro'
+
+// neverchange = 5    => would be an error
+
+// const is useful when you need to make sure a value stays the same
 
 
-JavaScript only hoists declarations, not initializations. 
-If a variable is declared and initialized after using it, 
-the value will be undefined.
-*/
 
-console.log(num); // Returns undefined, as only declaration was hoisted, no initialization has happened at this stage 
-var num; // declaration
-num = 6; // initialization
+// Hoisting is a way to take variable declaration and move it to the top of the scope
+
+// meaning that the variable becomes accesible from anywhere in the goof
+
+function putTogether (x) {
+    return console.log('I am ' + x);  // returns 'i am superman' x is hoisted
+}
+
+putTogether('superman');

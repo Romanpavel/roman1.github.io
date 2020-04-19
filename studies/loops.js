@@ -1,45 +1,39 @@
-/* 1. a) The while statement creates a loop that executes a specified statement 
-as long as the test condition evaluates to true. 
-The condition is evaluated before executing the statement.
+/* 1. a) while loop executes a block of code while the condition in the paratheses
+evaluate to be true
 */
 
-let n = 0;
+let n = 10;   // assign n to 0 integer
 
-while (n < 3) {
-  n++;
+while (n > 1) {  // while n is greater than 1, execute code below
+  n--;           // decrement by 1 as long as n is greater than 1
 }
 
-console.log(n);
-// expected output: 3
-
-/* b) The for statement creates a loop that consists of three optional expressions, 
-enclosed in parentheses and separated by semicolons, 
-followed by a statement (usually a block statement) to be executed in the loop.
-*/
-let str = "";
-
-for (let i = 0; i < 9; i++) {
-  str = str + i;
-}
-
-console.log(str);
-// expected output: "012345678"
+console.log(n); // returns 1 because thats the last number not greater than 1
 
 
-/* c) The for...in statement iterates over all enumerable properties of an object 
-that are keyed by strings.
+/* b) For loops allow you to loop through an array and access every element
+there are 3 main things in a for loop, the starting condition, the stopping 
+condition and the incrementor
 */
 
-const object = {a: 1, b: 2, c: 3};
-
-for (const property in object) {
-  console.log(`${property}: ${object[property]}`);
+var myArray = [1, 2, 3, 4, 5]
+for (var i = 0; i < myArray.length; i++) { // start at 0 index, stop at end of index, increment by 1
+  console.log(myArray[i] * 2) // prints an array [2, 4, 6, 8, 10], 
+  // multiplies every element in array by 2
 }
 
-// expected output:
-// "a: 1"
-// "b: 2"
-// "c: 3"
+
+// c) The for...in loop loops over an object and access every key in the object
+
+var myObj = {
+  key1: 'value1',
+  key2: 2,
+  key3: true
+}
+for (var key in myObj) {
+  console.log(myObj.key1 = 1) // changes all keys to have value of 1
+}
+
 
 // you can loop over an array or object as many times as you want
 
