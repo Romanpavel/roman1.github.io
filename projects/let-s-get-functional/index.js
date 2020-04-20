@@ -35,7 +35,7 @@ var maleCount = function(array) {
 var femaleCount = function(array) {
     //I: array of customer objs
     //O: number of female customers
-   return _.reduce(array, function(prev, current){
+  return _.reduce(array, function(prev, current){
         // when to increment our seed
             // if our customer has a gender of female
         if(current.gender === 'female') {
@@ -53,9 +53,19 @@ var oldestCustomer = function(array) {
     
     // create a variable and assign it to start of 0
     var oldestPerson = 0 ;
+    
+    // using the redue function which takes an array and a function, seed of a string
+    // function takes a prev and curr parameter 
+    // loops over the array and applies function to every element
     return _.reduce(array, function(prev, curr) {
+        
+        // using dot notation to access age of current person
+        // if current is larger than 0 asign to the oldest person
         if(curr.age > oldestPerson) {
             oldestPerson = curr.age;
+            
+            // since we have a loop in the reduce function 
+            // constantly replaces oldest person till it reaches the oldest
             return curr.name;
           
         }
@@ -68,11 +78,20 @@ var youngestCustomer = function(array) {
     // I: array of customer objects
     // O: a string of the oldest customer
     
-    // create a variable and assign it to start of 0
+    // create a variable and assign it to start of infinity
+    // since were looking for the youngest, start at the top and work backwards
     var youngestPerson = Infinity ;
+    
+    // return the function of reduce, takes a prev and curr parameter, seed of empty string
     return _.reduce(array, function(prev, curr) {
+        
+        // loops over the array, conditional if current age is smaller than infinity
         if(curr.age < youngestPerson) {
+            
+            // re- asigns yougest person to find the smallest age
             youngestPerson = curr.age;
+            
+            // returns the name of the current parameter 
             return curr.name;
           
         }
@@ -87,33 +106,236 @@ var averageBalance = function(array) {
     //I: an array of customer objects
     //O: the avarage balance of all customers as a number
     
-    
-    return _.filter(array, function(sum) {
-        for (var key in sum) {
-            sum[key] += sum
-        }
-        return _.reduce(array, sum)
-    })
-    
-    // return _.reduce(array, function(sum, people) {
-    //     for(var key in sum) {
-    //         sum[key] += sum;
-    //     }
-    //     return sum/people;
+ // using reduce, for array, function, and seed 0
+ // function takes parameter of sum and current value
+    var average = _.reduce(array, function(sum, curr){
         
-    }, 0);
+        // add up all the values of balance
+        // parseFloat return a string as a number
+        // slice method takes off the $ of the string balance
+        // split method by the comma
+        // join method to join the number without the comma
+        
+         sum += parseFloat(curr.balance.slice(1).split(',').join(''));
+         return sum;
+        
+        // divide the result by the amount of customers
+    }, 0) / array.length;
+    
+    // return the average
+    
+return average;
+};
+
+var firstLetterCount = function(array, letter) {
+      // I: an array of objects and a letter
+      // O: a number of how many people have a given letter that name starts with
+      
+      
+      // filter function, with array, function, 
+      // array of objects 
+      // function with parameter of name and firstLetter
+      var count = 0;
+       _.filter(array, function(customerObj){
+          
+          // start count at 0
+         
+          
+         
+          // if the first character of name string is equal to the firstLetter
+          // access first character wtith charAt(0)
+          // make sure all words are same case
+          // increase count by 1
+           
+                 if (customerObj.name.charAt(0).toUpperCase() === letter.toUpperCase()) {
+                     count++;
+        
+          }
+          
+          
+      
+          
+      });
+    
+      return count
 };
 
 
-var firstLetterCount;
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    // I: an array of object, a customer name and a letter
+    // O: a number representing the amount of friends that have the first letter
+    
+    
+    // start count at 0
+    
+    var count = 0
+    
+    // declare a variable for simplicity
+    var customerObj;
+    
+    // loop over the array of objects
+     for (let i = 0; i < array.length; i++) {
+         
+         // conditional statement if name at each customer mathes that customer
+         if (array[i].name === customer) {
+             
+             // reasign the customerObj object to the object of the customer
+             customerObj = array[i]
+         }
+     }
+     
+     // create an variable and asign it to the friends array of the customer
+    var customersFriendsArray = customerObj.friends
+    
+    // loop over the new array of the friends array of each customer
+    for (let y = 0; y < customersFriendsArray.length; y++) {
+        
+        // conditional statement if the first character of value associated with freinds, upercased
+        // is equal to the uppercased letter
+        if(customersFriendsArray[y].name.charAt(0).toLocaleUpperCase() === letter.toUpperCase()) {
+            
+            // increase count
+            count++
+        }
+    
+         
+     
+    
+}
 
-var friendsCount;
+    // return the count
+    return count
 
-var topThreeTags;
+};
 
-var genderCount;
+    
+
+
+
+
+var friendsCount = function(array, name) {
+    // I: an array of objects, and a name
+    // O: an array of customers names that have a specific name in their freinds array
+    
+    
+    // create an array to hold the values of names with certain friends
+    var nameArray = []
+    
+    // use the filter function 
+    
+    _.filter(array, function(customerObj) {
+        
+        // loop through the friends array, stopping at total number of friends
+        
+        for (let i = 0; i < customerObj.friends.length; i++) {
+        
+        // conditional statement to test every name in friends array to given name 
+        
+            if (customerObj.friends[i]['name'] === name) {
+                
+                // push the name of customer with given name in friends array
+            nameArray.push(customerObj['name']);
+        }
+        }
+       
+    })
+    return nameArray;
+}
+
+
+
+
+var topThreeTags = function(array) {
+      // I: an array of objects
+      // O: an array of the 3 most common tags
+      
+      
+      var allTags = _.pluck(array, 'tags');
+      
+
+      
+      var allTagsArray =  _.reduce(allTags, function(acc, curr) {
+          
+          return acc.concat(curr);
+         
+          
+      }, []);
+
+      
+      var uniqueTags = _.unique(allTagsArray)
+    
+      
+      var numberOfOccurances = _.map(uniqueTags, function(currentTag) {
+          let obj = {}
+          obj[currentTag] = 0
+          return obj;
+          
+      });
+      
+      
+    for (let i = 0; i < allTagsArray.length; i++) {
+        if (uniqueTags.includes(allTagsArray[i])) {
+           
+            for(let x = 0; x < numberOfOccurances.length; x++) {
+                
+                
+                if (numberOfOccurances[x][allTagsArray[i]] !== undefined) {
+                   
+                    numberOfOccurances[x][allTagsArray[i]]++;
+                }
+            }
+           
+           
+        }
+    }
+    
+    var greatestToLeast = numberOfOccurances.sort(function(a, b) {
+        return a.value - b.value
+        
+        
+    })
+    console.log(greatestToLeast)
+    // console.log(numberOfOccurances);
+};
+
+
+
+var genderCount = function(array) {
+    // I: an array of objects
+    // O: an object with keyvalue pair of gender 
+    
+    // return the reduce function 
+    
+    return _.reduce(array, function(acc, currObj) {
+
+    // if the gender of the current customer is male
+    // add male to the male seed
+
+        if (currObj.gender === 'male') {
+            acc.male++;
+            
+            // if gender of customer is female
+            
+        } else if (currObj.gender === 'female') {
+            // increase female seed by 1
+            acc.female++;
+            
+            // if customer is non-binary
+        } else if (currObj.gender === 'non-binary') {
+            
+            // increase 'non-binary' seed by 1
+            acc['non-binary']++;
+        }
+     
+     // return the accumulator
+     return acc;
+      
+    }, {male: 0,
+    female: 0,
+    'non-binary': 0});
+    
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
