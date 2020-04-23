@@ -251,20 +251,25 @@ var topThreeTags = function(array) {
       // O: an array of the 3 most common tags
       
       
+      // use _.pluck function to return an array of tags
       var allTags = _.pluck(array, 'tags');
       
 
-      
+      // create variable to put all tags into a single array
       var allTagsArray =  _.reduce(allTags, function(acc, curr) {
           
+          // return a single array with all tags
           return acc.concat(curr);
          
-          
+          // seed of empty array
       }, []);
 
+      // using unique function to return array with all duplicates removed
+      // to test later
       
       var uniqueTags = _.unique(allTagsArray)
     
+    // using map function create an object with tag name and the # of times tag appears
       
       var numberOfOccurances = _.map(uniqueTags, function(currentTag) {
           let obj = {}
@@ -273,14 +278,24 @@ var topThreeTags = function(array) {
           
       });
       
+      // loop over ALL the  the tags from allTagsArray 
       
     for (let i = 0; i < allTagsArray.length; i++) {
+        
+        // using includes method, we can test if any tags from uniqueTags array
+        // incude the tag in allTagsArray at ith index
+        
         if (uniqueTags.includes(allTagsArray[i])) {
+            
+            // iterate through the numberOfOccurances array of objects
            
             for(let x = 0; x < numberOfOccurances.length; x++) {
                 
+                // test if the ith tag in the array of objects doesnt exist
                 
                 if (numberOfOccurances[x][allTagsArray[i]] !== undefined) {
+                    
+                    // increment the tag by 1 for every tag at the value
                    
                     numberOfOccurances[x][allTagsArray[i]]++;
                 }
@@ -290,13 +305,34 @@ var topThreeTags = function(array) {
         }
     }
     
-    var greatestToLeast = numberOfOccurances.sort(function(a, b) {
-        return a.value - b.value
-        
-        
-    })
-    console.log(greatestToLeast)
-    // console.log(numberOfOccurances);
+    // turn an array of objects into an array of arrays 
+var sort = [];
+
+for (let i = 0; i < numberOfOccurances.length; i++) {
+    for (var tag in numberOfOccurances[i]) {
+        sort.push([tag, numberOfOccurances[i][tag]]);
+    }
+}
+
+// sort the array from highest number to lowest amout of tags
+
+sort.sort(function(a, b) {
+    return b[1] - a[1];
+});
+
+// take out the top 3 most mentioned tags using splice
+
+var top3 = sort.splice(0, 3);
+
+// just return the tag names
+
+var top3tags = [];
+
+for(let i = 0; i < top3.length; i++) {
+    top3tags.push(top3[i][0]);
+}
+
+return top3tags;
 };
 
 

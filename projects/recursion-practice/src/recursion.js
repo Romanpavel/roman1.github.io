@@ -5,31 +5,125 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  //I: a number
+  //0: a factorial of the number
+  
+  // create a starting variable and set it equal to 0
+  var p = 0;
+  
+  // make sure its positive
+ if (n < 0) {
+   return null
+   
+   // if n is 0 return 1
+ } else if (n === 0) {
+   return 1;
+ }
+ // mutlply n by itself by the next number down until 0
+ return p = n * factorial(n-1);
 };
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  //I: an array of numbers
+  //O: sum of numbers in array
+  
+  // if no numbers are in the array return 0
+  if (array.length === 0) {
+    return 0
+    
+    // add the first index of the array to the rest of the array 
+  } else {
+    return array[0] + sum(array.slice(1))
+}
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  
+  //I: a number
+  //O: a boolean if number is even
+  
+  // check if number exists above first odd integer
+  if (n > 1) {
+    
+    // return the number subtracting 2 till 0
+    return isEven(n - 2);
+    
+    // check if number is negative
+  } else if (n < 0) {
+    
+    // return postive even number
+    return isEven(n + 2); 
+    
+    // check if 0 and return true
+  } else if (n === 0) {
+    return true;
+    
+    // check if n is equal to 1 and return false
+  } else if (n === 1) {
+    return false
+  }
+  // return the function at every number n having passed all tests
+  return isEven(n)
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  
+  // I: a number
+  // O: a number that summed up all numbers below that number
+  
+  // create a variable to hold a number
+var num = 0;
+
+// if the number is 0 return 0
+if (n === 0) {
+  return 0;
+  
+  // if the number exists add the number with all number below it
+} else if (n > 1) {
+  num = n - 1 + sumBelow(n - 1);
+  
+  // if the number is negative, sum with the number above
+} else if (n < 0) {
+  num = n + 1 + sumBelow(n + 1);
+}
+// return the sum of integers
+return num;
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+  
+  // I: 2 numbers
+  // O: an array of all integers between 2 given numbers
+  
+  // if the 2 numbers are 2 integers apart return the middle integer
+  
+  if(y - x === 2) {
+    return [x + 1];
+    
+    // if the range is not given return an empty array
+  } else if (x && y === 0) {
+    return [];
+    
+    // create array with all integers below the last integer
+  } else {
+    var list = range(x, y - 1);
+    list.push(y - 1);
+    return list;
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -38,6 +132,16 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+if (exp === 0) {
+  return 1;
+} else if (exp === 1) {
+  return base;
+} else if (exp > 1) {
+  return (base * exponent(base, exp-1));
+  } else if (exp < 0) {
+    return 1 / exponent(base, -exp);
+  }
+
 };
 
 // 8. Determine if a number is a power of two.
@@ -45,14 +149,55 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  
+  // I: a number
+  // O:a boolean if the number is a power of 2
+  
+  // if n is equal to 1 return true
+  if (n === 1) {
+    return true
+    
+    // if n is negative or zero return false
+  } else if (n < 1) {
+    return false
+  }
+  // return n divided by 2 that passes all tests
+  return powerOfTwo(n / 2)
+  
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  
+  // if its an empty string return an empty string
+  if (string === "") {
+    return "";
+    
+    // return the string at the 2nd index plus the first character
+    // iterate through the enitre string till array is in reverse order
+  }else {
+    return reverse(string.substr(1)) + string.charAt(0)
+}
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  // I: a string
+  // O: boolean value if string is equal forward and backward
+  
+  // if the string is 1 letter its a palindrone, or no string given
+  if(string.length <= 1) {
+    return true;
+  }
+
+  var stringlength = string.length;
+  
+  if(string[0] !== string[stringlength - 1]) {
+    return false;
+  }
+  return(palindrome(string.slice(1, -1)));
+  
+  // test if first and last letter is the same, move index in
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
