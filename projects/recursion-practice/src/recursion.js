@@ -109,21 +109,23 @@ var range = function(x, y) {
   // I: 2 numbers
   // O: an array of all integers between 2 given numbers
   
-  // if the 2 numbers are 2 integers apart return the middle integer
-  
-  if(y - x === 2) {
-    return [x + 1];
-    
-    // if the range is not given return an empty array
-  } else if (x && y === 0) {
+//BaseCase- when x is = to when y -1 return an empty array
+  if(x === y - 1){
     return [];
-    
-    // create array with all integers below the last integer
-  } else {
-    var list = range(x, y - 1);
-    list.push(y - 1);
-    return list;
   }
+  if(x === y + 1){
+    //EdgeCase- when x is = to when y + 1 return an empty array
+    return [];
+  } //EdgeCase- when x is equal to y return an empty array
+  if (x === y){
+    return [];
+  }
+  //RecursiveCase- when x > y return an empty array
+  if(x > y){
+    return range(x, y + 1).concat(y + 1);
+  }
+  //RecursiveCase- when x > y return an empty array
+  return range(x, y - 1).concat(y - 1);
 };
 
 // 7. Compute the exponent of a number.
@@ -185,17 +187,29 @@ var palindrome = function(string) {
   // I: a string
   // O: boolean value if string is equal forward and backward
   
-  // if the string is 1 letter its a palindrone, or no string given
-  if(string.length <= 1) {
-    return true;
-  }
+ 
+  // if string is a single character it is a palindrone
+if (string.length <= 1){
+  return true;
+}
 
-  var stringlength = string.length;
+// make sure all chararcter are the same case and no spaces
+  var newStr = string.toLowerCase().trim();
   
-  if(string[0] !== string[stringlength - 1]) {
+  // asign new variable to the length of the string with no spaces and same case
+  
+  var stringLength = newStr.length;
+  
+  // if the first letter is not the same as the last letter return false
+  if (newStr[0] !== newStr[stringLength - 1]){
     return false;
   }
-  return(palindrome(string.slice(1, -1)));
+  
+  // return test of characters increminting up 1 from 1st character and
+  // down one from last character
+  
+  return (palindrome(newStr.slice(1, -1)));
+
   
   // test if first and last letter is the same, move index in
 };
@@ -211,6 +225,15 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 var multiply = function(x, y) {
+  
+    if (y > 0) {
+        return x + multiply(x, y - 1);
+    }
+    else if (y < 0) {
+        return -x + multiply(x, y + 1);
+    }
+
+    return 0;
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -232,39 +255,130 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  
+  // I: 2 strings
+  // O: boolean if strings are identical
+  
+  
+  // base case if the string exists
+  if(str1.length === 0 && str2.length === 0) {
+    
+    // match the first indexes 
+    if(str1[0] === str2[0]) {
+    return true;
+    }
+  }
+  
+  // if the first characters do match slice method returns the string at the 2nd index
+  // function calls itself matching each subsequent letter 
+  if (str1[0] === str2[0]) {
+    return compareStr(str1.slice(1), str2.slice(1));
+  }
+  
+  // if the first characters do not match, no need to moe forward
+  if(str1[0] !== str2[0]) {
+    return false;
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
+
+// I: a string
+// O: an array of strings
+
+
 var createArray = function(str){
+  
+  // base case, if string doesnt exist return an array
+  if(str.length === 0) {
+    return [];
+  }
+  
+  // using recursion slice the string from first to last character
+  // return the last string taken off, which is the first string in the array
+  // concat the string into an array
+  return createArray(str.slice(0, str.length - 1)).concat(str[str.length - 1]);
 };
 
 // 17. Reverse the order of an array
+
+
+
 var reverseArr = function (array) {
+  if(array.length === 0) {
+    return [];
+  }
+  return reverseArr(array.slice(1)).concat(array[0]);
+  
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
+
+// I: 2 numbers a value, and length
+// O: an array of the value limited by the length number
+
+
 var buildList = function(value, length) {
+  
+  // base case if there is no length, empty array
+  if(length === 0) {
+    return [];
+    
+    // check if value is not given, add empty array
+    
+  } else if (Array.isArray(value) && value.length === 0) {
+    return buildList(value, length - 1).concat([[]])
+  }
+  
+  // using recursion decriment from the length. then add the value
+  
+  return buildList(value, length - 1).concat(value);
+  
+  
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  if (!array.length) { return 0}
+  return (array[0] === value) + countOccurrence(array.slice(1), value);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  
+  // I: an array, and a fucntion
+  // O: an array
+
+// base case if array is empty
+ if(!array.length) {
+  return [];
+ }
+ 
+ // return the array, then use the concat method to add recursion by multplying the 
+ // last element by 2 and returning a new array
+ 
+ return rMap(array.slice(0, array.length - 1), callback).concat(callback(array[array.length - 1]));
+ 
+  
 };
+
+
+
 
 // 21. Write a function that counts the number of times a key occurs in an object.
 // var testobj = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
 // countKeysInObj(testobj, 'r') // 1
 // countKeysInObj(testobj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+
+  
+  
 };
 
 // 22. Write a function that counts the number of times a value occurs in an object.
@@ -293,17 +407,63 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  
+  // I: an array
+  // O: a number 
+  
+  // base case of n equal to 0
+  if (n === 0) {
+    return 0;
+    
+    // edge case
+    
+   } else if (n === 1) {
+      return 1;
+    
+    
+    // if n is a negative number return null
+  } else if ( n < 0) {
+    return null;
+  }
+
+// return a recursive function adding the last 2 numbers of behind n
+  
+  return nthFibo(n - 1) + nthFibo(n - 2);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
+  
+  // base case if there is no words in the array, return an empty array
+  
+  if(input.length === 0) {
+    return [];
+  }
+  
+  // recursive fucntion slicing the whole array, then adding the last word uppercased
+  
+  return capitalizeWords(input.slice(0, input.length - 1)).concat(input[input.length - 1].toUpperCase());
+  
+  
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function(array) {
+  
+  // I: an array
+  // O: an array with the first letter capitilized 
+  
+  // base case if array is empty
+  
+  if (array.length === 0) {
+    return [];
+  }
+  
+  return capitalizeFirst(array.slice(0, array.length - 1)).concat(array[array.length - 1][0].toUpperCase() + array[array.length - 1].slice(1));
+  
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -325,7 +485,31 @@ var flatten = function(arrays) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj = {}) {
+  
+  // I: a string and an object
+  // O: an object with number associted with time key is present in object
+  
+  // base case at no string, return the given object
+  
+if(str.length === 0) {
+  return obj;
+}
+
+// if obj has a value at the first index, increment by 1
+
+if(obj.hasOwnProperty(str[0])) {
+  obj[str[0]] += 1;
+  
+  //  create property and asign it to 1
+} else {
+  obj[str[0]] = 1;
+}
+
+// using recurscion bring back starting at the 2nd index
+
+return letterTally(str.slice(1), obj);
+
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -334,6 +518,30 @@ var letterTally = function(str, obj) {
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list) {
+  
+  // I: array
+  // O: array with all duplicates removed
+  
+  // create a list to house all non-dupplicates
+  
+  var values = [list[0]];
+  
+  // if there is 1 element in the array return the values list
+  // base case
+  
+  if(list.length === 1) {
+    return values;
+  }
+  
+  // recursive if the last value is equal to the second index of list
+  if (values[values.length - 1] === list[1]) {
+    
+    // return the function with the array starting at 2nd element
+    return compress(list.slice(1));
+  } else {
+    return values.concat(compress(list.slice(1)));
+  }
+  
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -346,6 +554,35 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  
+  // create a list to contain the 0
+  
+  let values = [array[0]];
+  
+  // base case, if there is 1 element in the array, return values
+  
+  if (array.length === 1) {
+    return values;
+  }
+  
+  // if the last index does not match the 2nd index of array
+  if (values[values.length - 1] !== array[1]) {
+    
+    // return the values concated starting at second index
+    return values.concat(minimizeZeroes(array.slice(1)));
+  } 
+  
+  // if they are equal and each euqal 0 return the recursive function
+  
+ if (values[values.length - 1] === array[1]) {
+   if (values[values.length - 1] === 0 && array[1] === 0) {
+      return minimizeZeroes(array.slice(1));
+      
+      // else return the concated values starting at 2nd index
+  } else {
+    return values.concat(minimizeZeroes(array.slice(1)));
+  }
+}
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
@@ -353,12 +590,81 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  
+  
+  // I: an array
+  // O: an array with the alternate numbers
+  
+  // create a base case  
+  
+  if(array.length === 0) {
+    return [];
+  }
+  
+  // if the first index of array is less than 0
+  if (array[0] < 0) {
+    
+    // asign it to the negative
+    array[0] = -array[0];
+  }
+  
+  // do opposite of above
+  
+  if (array[1] > 0) {
+    array[1] = -array[1];
+  }
+  
+  // recursive case concating the different elements togehter into 1 array
+  return [array[0], array[1]].concat(alternateSign(array.slice(2)));
+  
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  
+  // create object of key/value pairs
+  
+  var myObj = {
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    0: 'zero'
+  };
+  
+  // create an variable to hold string
+  
+  var result = '';
+  
+  // base case
+  
+  if (str.length === 0) {
+    return result;
+  } else {
+    
+    // create a varaible to hold current character
+    var currentChar = str.charAt(0);
+    
+    // if obj exists add value to current result
+    if (myObj[currentChar]) {
+      result += myObj[currentChar];
+      
+      // else add up result to the currentChar
+    } else {
+      result += currentChar;
+    }
+    
+    // recursive case
+    return result + numToText(str.slice(1));
+  }
+  
 };
 
 // *** EXTRA CREDIT ***
