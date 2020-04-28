@@ -15,11 +15,11 @@ anotherVariable = 3;
 
 // you can shorten this step on a single line
 
-var myVariable = 'Im another string';
+var myVariable = 'Im another string';  // this is called initializing the variable
 
 // var keyword is usually used in global scope
 
-var globalVariable = 42;
+var globalVariable = 42;             // Initialized variable
 
 // let is usually used a placeholder for a local scope, or inside loops
 
@@ -39,6 +39,13 @@ function hey (x) {
 
 
 // Hoisting is a way to take variable declaration and move it to the top of the scope
+
+// variables declared with (var) can be globally accessed and are hoisted to the top
+
+// variables declared with (let) and (const) are not hoisted and only initialized 
+// when the code reaches the block where let and const are
+// accessing variables declared with let or const before theyre declared => reference error
+// let and const variables are in the "temporal dead zone" until their scope is entered
 
 // meaning that the variable becomes accesible from anywhere in the goof
 

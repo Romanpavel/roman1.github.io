@@ -1,3 +1,9 @@
+// loops are ways in programming to itterate through complex dataTypes and check for a condition
+// if a condition is met you can run code repeatedly through the code block
+
+
+
+
 /* 1. a) while loop executes a block of code while the condition in the paratheses
 evaluate to be true
 */
@@ -39,16 +45,17 @@ for (var key in myObj) {
 
 var j = []
 
-for (var i = 0; i < 100; i++) { // loop over array forward
-  console.log(i)
+for (var j = 0; j < 100; j++) { // loop over array forward, start at 0, stop before 100
+  console.log(j)                // prints numbers 0 - 99
 }
 
 // counting backwards would swtich the starting/ stopping conditions
 
-var k = []
+var k = [1, 2, 3]
 
 for (var a = k.length; a > 0; a--) { // loop over array backwards
-  console.log(a)
+                                    // start at end of k, stop at above 0
+  console.log(a)                     // prints 3, 2, 1
 }
 
 // in order to loop over an object, must use for.. in loop

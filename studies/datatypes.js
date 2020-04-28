@@ -1,3 +1,12 @@
+// DataTypes can store value, different dataTypes store different kinds of values
+// there are simple dataTypes like Numbers, Strings, Booleans
+// there are also complex dataTypes like arrays, objects, and functions,
+// complex dataTypes can store other dataTypes inside of them
+
+
+
+
+
 // 1. Number are any numeric value, or integer
 var i = 1
 var n = -1   // negative numbers have a (-) in front
@@ -87,6 +96,10 @@ console.log(null)  // prints null to the screen, asigned to nada
 // 9. NaN represents Not-a-Number, its a porperty that evaluates a value 
 // if the value is not a legal number you'll recieve a NaN
 
+isNaN(true) // prints true, boolean is Not a Number
+isNaN('hello') // print true, string is Not a Number
+isNaN(8)       // prints false because 8 is a Number
+
 
 
 // 10. inifinity and -infinity are numeric values represeting infininty and negative infinity 
@@ -103,13 +116,40 @@ There are 6 primitive data types: string, number, bigint, boolean, undefined, an
 /* 13. there are 5 data types that are passed by value: 
 (Boolean, null, undefined, String, and Number.)
 
+passed by value means creating a copy of the original, to use later
+
            `~ you can pass these values through the 5 dataTypes
             ~ using the asignment operator (=) these values are "copied"
+            
+*/
+            var myNumber = 11;
+            var newNumber = myNumber;
+            myNumber = 2;
+            
+            console.log(newNumber);   // prints 11 to the screen
+            console.log(myNumber);    // prints 2 to the screen
+            
+            // the variable newNumber copied myNumber => (11) 
+            // myNumber is re-asigned to 2
+
+/*
 
 Javascript has 3 data types that are passed by reference:
 Array, Function, and Object. These are all technically Objects
 
+passed by reference means creating a Psuedonym or Alias to the original
+
             - when we reference complex dataTypes they come from a collection 
-            - theyre accessed through either dot (.) or bracket notation ([])
+            - theyre accessed through either dot(.) or bracket notation ([])
+            - 
 
 */
+
+var myObj = {
+    name: 'roman',
+    age: 29,
+    human: "maybe"
+};
+myObj.human = true;
+
+console.log(myObj)   // prints {name: 'roman', age: 29, human: true}

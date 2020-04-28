@@ -1,8 +1,37 @@
+
+// operators are a short way for us to organize and manipulate dataTypes
+
 // 1. the assignment operator is the = 
 
 var any = 5 // vavariable of any is assigned the value of 5
 
 any = 10 // you can change the variable and use the assignment operator to alter
+
+var y = 10
+var y1 = 2
+
+
+y += y1; // y = y + y1 = 12
+
+y -= y1 // y = y - y1 = 8
+
+y *= y1 // y = y * y1 = 20
+
+y /= y1  // y = y / y1 = 5
+
+
+
+// a strict comparison === takes 3 equals signs and compares if 2 things are
+// Exactly the same 
+
+1 === 1;
+true === true;
+'string' === 'string';
+
+// a loose comparison == is represented by 2 equals signs and converts dataTypes to common types
+
+1 == '1';
+
 
 /* 2. arithmatic operators are 
 adding (+), and subtrcating (-)

@@ -4,9 +4,9 @@
 
 // knowing this we can control the flow of our code through a series of 
 // If/ Else If/ Else 
-
-if (true) {         // if a parameter turns out to be true run code block
-  console.log('')   // amy code block, that you want to run 
+var x = 2;
+if (x > 1) {         // if a parameter turns out to be true run code block
+  console.log('');   // any code block, that you want to run 
 }
 
 // when comparing multiple conditions, you can use a chain of If statements with
@@ -28,6 +28,41 @@ if (a > b) {                    // false
   
 } else if (b > a) {           // code stops here, evaluates to true, 
   console.log('B is bigger');  // prints to the screen
+  
+  
+  //  ********* Syntax *************
+  
+  // if (condition) {         // a sigular if statement 
+   // statement
+ // }
+ 
+ //  if (condition1) {      // if condtion1 is false, a single else statement returns
+   // statement1
+// } else {
+  // statement2
+//}
+  
+  
+  // if (condition1) {       // nested if statemennt
+    // if (conditionN) {      // as many if as needed
+      // statement
+    // }
+  // }
+  
+  
+  // if (condition1) {            // endless chain of if/else if statements
+    // statement1
+  // } else if (condition2) {
+    // statement2
+    // .
+    // .
+    // .
+  // } else if (conditionN) {
+    // statementN
+  // }
+  
+  
+  
   
   // computer does not go any further becuase the above if was true
   
@@ -74,3 +109,30 @@ switch(x) {             // x is any expression that has a strict equal operator
 
 // switch statements can be more effieictn when dealing with data values
 // allows to copare multiple expressions reducing redundancies 
+
+
+// **** syntax ******
+
+// switch (expression) {     // switch keyword, followed by expression in ()
+  
+  // case value1:            // keyword case followed by a value
+  
+    // statement1            // runs when expression matches the value1
+  
+  // break;                 // keyword break to stop switch expression
+  
+  // ...
+  
+  // case valueN:           // cases can continue infinitely 
+  
+    // statementN
+    
+  // break;
+  
+  // default:
+  
+    // statement            // runs if no cases match the expression
+    
+  // break;
+  
+// }
