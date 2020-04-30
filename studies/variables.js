@@ -1,16 +1,16 @@
-/* variables are place holders for any dataType, they are a way for us to name things
-
- variables can be expressed with 3 different special words: var, let, const
-
-to declare a variable we simply use 1 of the 3 key words followed by any name
-
-var is a special variable that get hoisted to the top of the scope when delcared
-
-let is usually used as a variable to only exist within its scope
-usually these variables are only important for their current function
-
-const is a special variable, once declared its value is constant and can not be changed.
-*/
+/*
+ * VARIABLES:
+ *
+ * 0. To hold things in memory during the life-cycle of a program, we can use variables.  Variables
+ * are named identifiers that can point to values of a particular type, like a Number, String,
+ * Boolean, Array, Object or another data-type.  Variables are called so because once created, we
+ * can CHANGE the value (and type of value) to which they point.
+ *
+ * 1. To create a variable we use the keyword, var, followed by a name (id or alias) for our
+ * variable.
+ *
+ * 2. There are 2 phases of using variables: declaration and initialization (or assignment).
+ */
 
 
 var myVariable;

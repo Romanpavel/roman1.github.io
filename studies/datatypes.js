@@ -1,19 +1,29 @@
-/* DataTypes can store value, different dataTypes store different kinds of values
- there are simple dataTypes like Numbers, Strings, Booleans
- there are also complex dataTypes like arrays, objects, and functions,
-complex dataTypes can store other dataTypes inside of them
-
-javascript is a language based around objects and functions.
-technically a function and an array are considered objects.
-
-**** numbers store integers from -infintity to infinity 
-**** strings are enclosed in "" and can be anything 
-**** booleans are true/ false statements.
-
-**** arrays are represents by [] and can store any other data type in it
-**** objects are represented by {} and datatypes are stored in key/value pairs
-**** function take a 'function' keyword or => 
-***** they can hold a parameter and return a value after passing in other dataTypes
+/* 
+ *
+ * DATATYPES:
+ *
+ * 0. DataTypes can store value, different dataTypes store different kinds of values
+ *    there are simple dataTypes like Numbers, Strings, Booleans
+ *
+ * 1. there are also complex dataTypes like arrays, objects, and functions,
+ *    complex dataTypes can store other dataTypes inside of them
+ *
+ * 2. javascript is a language based around objects and functions.
+ *    technically a function and an array are considered objects.
+ *
+ * 3. numbers store integers from -infintity to infinity  
+ *
+ * 4. strings are enclosed in "" and can be anything 
+ *
+ * 5. booleans are true/ false statements.
+ *
+ * 6. arrays are represents by [] and can store any other data type in it
+ *
+ * 7. objects are represented by {} and datatypes are stored in key/value pairs
+ *
+ * 8. function take a 'function' keyword or => 
+ *
+ * 9. they can hold a parameter and return a value after passing in other dataTypes
 */
 
 

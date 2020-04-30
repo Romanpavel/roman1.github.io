@@ -1,13 +1,20 @@
-/* loops are ways in programming to itterate through complex dataTypes and 
-   check for a condition if a condition is met you can run code repeatedly 
-   through the code block
-   
-   *** you can loop through an array with a for loop 
-   *** you can loop through objects with a for... in loop
-   *** there are also while and do...while loops
-   
-   we want to be able to iterate are 'loop' over a data set checking for conditions
-   if data sets are increidbly large loops help us deal, compress, and pick out values
+/*
+ *
+ * LOOPS:  
+ *
+ *
+ *  0. loops are ways in programming to itterate through complex dataTypes and 
+ *     check for a condition if a condition is met you can run code repeatedly 
+ *     through the code block
+ *  
+ *  1. you can loop through an array with a for loop 
+ *
+ *  2. you can loop through objects with a for... in loop
+ *
+ *  3. there are also while and do...while loops
+ *
+ *  4. we want to be able to iterate are 'loop' over a data set checking for conditions
+ *     if data sets are increidbly large loops help us deal, compress, and pick out values
 */
 
 

@@ -1,3 +1,33 @@
+/*
+ *
+ *   FUNCTIONS:
+ *
+ *  0. functions are a special type of objects.
+ *    
+ *  1. functions take a paramater as a placeholder for future arguments
+ *
+ *  2. functions are created with the 'function' keyword or => an arrow
+ *
+ *  3. dataTypes can be passed into functions to return other dataTypes and values
+ *
+ *  4. functions are considered 1st class functions, they have properties and methods
+ *     but can be invoked by "calling" it through the functions name, and 
+ *     passing in an argument
+ *
+ *  5. functions are composed a sequence of statements called the function body
+ *
+ *  6. functions need return statements to indicate the value to return
+ *      if no return statement is given the function will return the default value
+ */
+
+
+
+
+
+
+
+
+
 /* 1. the way you invoke a function is by calling it by the function name,
 followed by parantheses ()
 */
