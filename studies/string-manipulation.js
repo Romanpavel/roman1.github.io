@@ -1,9 +1,13 @@
 
-// strings are anything we want to write between quotes, either "" or ''
-// this is very useful is javaScript as its a written language and makes naming things
-// and referencing those things much easier
-// sometimes we need to alter and access these strings, and there are several methods
+/* strings are anything we want to write between quotes, either "" or ''
+ this is very useful is javaScript as its a written language and makes naming things
+ and referencing those things much easier
+sometimes we need to alter and access these strings, and there are several methods
 
+strings are indexed just like arrays where the first character is the [0] index
+strings are great ways for us to insert human language into the code
+through strings we can talk through the computer code and print what we want to say
+*/
 
 // 1. strings have a couple operators 
 

@@ -1,6 +1,13 @@
-// control flow is a way to steer your code towards a desired outcome.
-// computers operate on an on/off basic thought process
-
+/* control flow is a way to steer your code towards a desired outcome.
+ computers operate on an on/off basic thought process.
+ knowing these principles we can steer code based on this fundemental principle.
+ 
+ if a exists => do this, if not => do this instead
+ we can have several conditional statements that represent binary decisions
+ 
+ as the we move through the code conditional statements guide our code to a 
+ desired destination through a series of binary decsions.
+*/
 
 // knowing this we can control the flow of our code through a series of 
 // If/ Else If/ Else 

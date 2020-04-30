@@ -1,5 +1,15 @@
 
-// operators are a short way for us to organize and manipulate dataTypes
+/* 
+operators are a short way for us to organize and manipulate dataTypes
+there are several types of operators 
+
+we can asign variables to values or other variables through assignment
+there are also operators wich manipulate numbers and get values through arithmatic
+we can also use operators to figure out what type of values we have. 
+operators are used on variables and values
+
+*/
+
 
 // 1. the assignment operator is the = 
 

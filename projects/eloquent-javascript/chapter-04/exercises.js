@@ -6,6 +6,9 @@
 
 function range(start, end, step = start < end ? 1 : -1) {
   
+  // I : 3 numbers a start and an end and a step
+  // array of all numbers between start and end "stepped" between them
+  
   // create array to hold values 
   let array = [];
 
@@ -21,9 +24,13 @@ function range(start, end, step = start < end ? 1 : -1) {
     
     // incremenenter add i to step, push index i into array
     
-    for (let i = start; i <= end; i += step) array.push(i);
+    for (let i = start; i <= end; i += step) {
+      array.push(i);
+    }
   } else {
-    for (let i = start; i >= end; i += step) array.push(i);
+    for (let i = start; i >= end; i += step) {
+      array.push(i);
+    }
   }
   return array;
 }
@@ -34,13 +41,17 @@ function range(start, end, step = start < end ? 1 : -1) {
 
 function sum(array) {
   
+  // I : an array of numbers
+  // O : a number of the sum of the numbers in the array
+  
   // variable starting at 0
   let total = 0;
   
   // loop through array
   for (let value of array) {
     
-    // add value property to total with every iteration
+    // add value element to total with every iteration
+    // summing up all the element numbers in the array
     total += value;
   }
   return total;
@@ -52,15 +63,24 @@ function sum(array) {
 
 function reverseArray(array) {
   
+  // I : an array
+  // O : the array in reverse order
+  
   // create an array to pass in values
   let output = [];
   
-  // start at the end of the array and count backwards
+  // start at the end of the array and loop backwards
+  // decriment at every iteration
   for (let i = array.length - 1; i >= 0; i--) {
     
     // push value at index i into the output array
+    // add the last index to the new output array, then add the rest subsequently
+    // resulting in the elements being added in reverse
     output.push(array[i]);
   }
+  
+  // return the reversed array
+  
   return output;
 }
 
@@ -72,10 +92,16 @@ function reverseArray(array) {
 
 function reverseArrayInPlace(array) {
   
-  // for loop, stopping condition the middle of the array,
+  // I : an array
+  // O : the array in reverse order
+  
+  // for loop
+  // start at 0
+  // stopping condition is the middle of the array
+  
   for (let i = 0; i < Math.floor(array.length / 2); i++) {
     
-    // variable for i index of array
+    // asign variable old to ith index of array
     let old = array[i];
     
     // asign the last index subtracted by index i to equal the index of i at array
@@ -93,7 +119,10 @@ function reverseArrayInPlace(array) {
 
 function arrayToList(array) {
   
-  // variable for null
+  // I : an array
+  // O: an object
+  
+  // variable for null, for future object 
   let list = null;
   
   // for loop backwards over array
@@ -111,14 +140,17 @@ function arrayToList(array) {
 
 function listToArray(list) {
   
+  // I : an object
+  // O : an array
+  
   // create array
   let array = [];
   
-  // start at list, end at node, increment by re-asign value at rest to node
-  for (let node = list; node; node = node.rest) {
+  // start at list, end at x, increment by re-asign value at rest to x
+  for (let x = list; x; x = x.rest) {
     
     // add the value to array 
-    array.push(node.value);
+    array.push(x.value);
   }
   return array;
 }
@@ -128,6 +160,9 @@ function listToArray(list) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function prepend(value, list) {
+  
+ // I : a value and an object
+ // O : adds the value elemtn to the front of the object
   
   // return an object of the value input and the rest of the list
 return {value, rest: list};
@@ -139,17 +174,25 @@ return {value, rest: list};
 
 function nth(list, n) {
   
-  // if its not a list
-  if (!list) 
+  // I : an number and an object
+  // O : the element at the position of the list
+  
+  // if list doesnt exist, or if there is no list
+  if (!list) {
   return undefined;
   
-  // if n is equal to 0 return the value of list
-  else if (n == 0)
+  // if n is equal to 0 return the value of the list
+  // base case
+ } else if (n == 0)
   return list.value;
   
-  // return the function at value rest, and integer n - 1
-  else 
+  
+  // using recursion, return the function at the rest property and n - 1 for 
+  // the other parameter
+ 
+  else {
   return nth(list.rest, n - 1)
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -157,6 +200,12 @@ function nth(list, n) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function deepEqual(a, b) {
+  
+  // I : 2 values
+  // O : boolean if the rqual each other
+  
+  
+  // base case a strictly equal to b
   if (a === b) {
     return true;
   }
@@ -166,7 +215,7 @@ function deepEqual(a, b) {
        return false;
 }
 
-// access the keys of the object
+// return all the values into an array in string form
   let keysA = Object.keys(a) 
   let keysB = Object.keys(b);
 
@@ -179,9 +228,9 @@ function deepEqual(a, b) {
 // loop over the created array of keysA
   for (let key of keysA) {
     
-    /* if array keysB does not include specific key
-    or the function of deepEqual does not have a value at a and b key 
-    */
+    // if array keysB does not include specific key
+    // or using recursion if the values are not there return false
+   
     if (!keysB.includes(key) || !deepEqual(a[key], b[key])) {
       return false;
   }

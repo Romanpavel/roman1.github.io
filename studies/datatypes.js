@@ -1,8 +1,20 @@
-// DataTypes can store value, different dataTypes store different kinds of values
-// there are simple dataTypes like Numbers, Strings, Booleans
-// there are also complex dataTypes like arrays, objects, and functions,
-// complex dataTypes can store other dataTypes inside of them
+/* DataTypes can store value, different dataTypes store different kinds of values
+ there are simple dataTypes like Numbers, Strings, Booleans
+ there are also complex dataTypes like arrays, objects, and functions,
+complex dataTypes can store other dataTypes inside of them
 
+javascript is a language based around objects and functions.
+technically a function and an array are considered objects.
+
+**** numbers store integers from -infintity to infinity 
+**** strings are enclosed in "" and can be anything 
+**** booleans are true/ false statements.
+
+**** arrays are represents by [] and can store any other data type in it
+**** objects are represented by {} and datatypes are stored in key/value pairs
+**** function take a 'function' keyword or => 
+***** they can hold a parameter and return a value after passing in other dataTypes
+*/
 
 
 
@@ -96,13 +108,26 @@ console.log(null)  // prints null to the screen, asigned to nada
 // 9. NaN represents Not-a-Number, its a porperty that evaluates a value 
 // if the value is not a legal number you'll recieve a NaN
 
-isNaN(true) // prints true, boolean is Not a Number
-isNaN('hello') // print true, string is Not a Number
-isNaN(8)       // prints false because 8 is a Number
+var number = 'two'             // string of a number
+
+var otherNumber = 'five'       // another string 
+
+var multiply = number * otherNumber
+
+console.log(multiply);    // returns NaN because you cannot use arithmetic on strings
+
+// NaN is designed to return when the code is performing mathematical functions
+// on dataTypes that are not numbers.
 
 
 
 // 10. inifinity and -infinity are numeric values represeting infininty and negative infinity 
+
+var infinity = console.log(1.797693134862315E+308) // this is the limit of the floating point number
+
+// infinty is displayed when number exceeds the code capacity of numbers
+
+var negativeInfintity = console.log(-1.797693134862315E+308) // this is the negative limit
 
 /* 11. Primitive data is data that is not an object and has no methods. 
 There are 6 primitive data types: string, number, bigint, boolean, undefined, and symbol. 

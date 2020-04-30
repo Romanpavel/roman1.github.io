@@ -5,6 +5,9 @@
 // 2 parameters of a and b
 function min(a, b) {
   
+  // I : 2 numbers
+  // O : the smaller number
+  
   // test comparison a and b
   if (a < b) {
     return a;
@@ -23,17 +26,28 @@ function min(a, b) {
 // paramter of n
 function isEven(n) {
   
-  // if paramter is loosely equal to 0
-  if (n == 0) return true;
+  // I : a number
+  // O : boolean if the given number (n) is even 
   
-  // first odd number is 1
-  else if (n == 1) return false;
+  // if paramter is  equal to 0 return true
+  // base case for ever
+  if (n === 0) {
+    return true;
   
-  // if negative number re call function as opposite
-  else if (n < 0) return isEven(-n);
+  // first odd number is 1, return false
+  // base case for odd
+  } else if (n === 1) {
+    return false;
+  
+  // if negative number re call function as opposite using recursion
+  } else if (n < 0) {
+    return isEven(-n);
   
   // test all other numbers for even
-  else return isEven(n - 2);
+  // using recursion the function will continuosly subtract 2 till it gets to 1 or 0
+  } else {
+    return isEven(n - 2);
+  }
 }
 
 
@@ -42,6 +56,12 @@ function isEven(n) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function countChars(string, ch) {
+  
+  // I : a string and a single character
+  // O : a number representing the amount of times a character is in a given string
+  
+  // create a varaible to store the count
+  
   let counted = 0;
   
   // loop through string array
@@ -52,6 +72,9 @@ function countChars(string, ch) {
       counted += 1;
     }
   }
+  
+  // return the total amount of time a character was in a string
+  
   return counted;
 }
 
@@ -61,6 +84,9 @@ function countChars(string, ch) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function countBs(string) {
+  
+  // I : a string
+  // O : a number with the amunt of times B was found
   
   // using recursion calling previous function to find 'B'
  return countChars(string, "B");
